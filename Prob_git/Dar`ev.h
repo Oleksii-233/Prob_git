@@ -1,3 +1,13 @@
 #pragma once
+#ifndef Dariev
+#define Dariev
+#include <iostream>
+using namespace std;
 
-// N - це "ен", а не "зет"!!!
+void Oleksiy();
+
+void Oleksiy() {
+	cout << "Chort" << endl;
+}
+
+#endif
