@@ -7,6 +7,7 @@ using namespace std;
 void Oleksiy();
 
 void Oleksiy() {
+	for(int i=0 ; i<999999;i++)
 	cout << "Chort" << endl;
 }
 
