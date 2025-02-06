@@ -3,8 +3,7 @@
 
 
 void readfromfile(ifstream& file){
- PeopleInformation inf[50];
-	int inf=0;
+ PeopleInformation inf;
 File.open("PeopleInformation.dat", ios::in, ios::binary);
   file1.clear();
 	file1.seekg(0);
