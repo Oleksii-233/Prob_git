@@ -98,7 +98,7 @@ int length;
 	file.close();
 }
 
-void addtofile(fstream& file){
+void addtofile(){
 	PeopleInformation inf;
 	ifstream f1("PeopleInformation.dat", ios::binary);
 	//відкриваємо buffer.dat для запису
@@ -113,20 +113,24 @@ void addtofile(fstream& file){
 	cout << "Введите дані:\n";
 	for (i = 0; i <= m - 1; i++)
 	{
-		cout << i + 1 << "-й товар:\n";
-		cout << "-шифр: "; cin.getline(tov.shifr, 10);
-		cout << "-название: "; cin.getline(tov.nazv, 20);
-		cout << "-цена: "; cin >> tov.сеna; cin.get();
-		f2.write((char*)&tov, sizeof tov);
+		for (int i = 0; i < NumberPeople; i++) {
+		cout << "Введіть номер людини: "; cin >> inf.Number;
+		cout << "\nВведіть ім'я людини: "; cin.get(inf.Name, 50);
+		cout << "\nВведіть прізвище людини: "; cin.get(inf.Surname, 50);
+		cout << "\nВведіть стать людини: "; cin.get(inf.Sex, 50);
+		cout << "\nВведіть зріст людини: "; cin >> inf.Number;
+		cout << "\nВведіть вагу людини: "; cin >> inf.Number;
+		cout << "\nВведіть номер одягу людини: "; cin >> inf.Number;
+		cout << "\nВведіть номер взуття людини: "; cin >> inf.Number;
+	f2.write((char*)&inf, sizeof inf);
+	}
 	}
 	//закриваємо обидва файли 
 	f1.close();
 	f2.close();
 
-	//видаляємо файл tovary.dat 
-	remove("tovary.dat");
-	//перейменовуємо файл buffer.dat в tovary.dat
-	rename("bufer.dat", "tovary.dat");
+	remove("PeopleInformation.dat");
+	rename("PeopleInformation1.dat", "PeopleInformation.dat");
 
 
 }
