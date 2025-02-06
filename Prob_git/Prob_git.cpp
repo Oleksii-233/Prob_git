@@ -50,7 +50,7 @@ int main() {
 			// Функція
 		}break;
 		case 8: {
-			// Функція
+			addtofile();
 		}break;
 		}
 	} while (ans >= 0 && ans <= 8);
