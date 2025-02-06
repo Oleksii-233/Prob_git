@@ -72,7 +72,6 @@ int count;
 void sortaverage(fstream& file){
 	PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
-int length;
 	double avhe = avheight(file);
 	double avwe = avweight(file);
 	cout <<setw(3)<<"№"<< setw(10)<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
@@ -94,6 +93,10 @@ int length;
 	
     }
 	file.close();
+}
+
+void (){
+	
 }
 
 #endif
