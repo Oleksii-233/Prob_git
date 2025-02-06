@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <string>
+#include <cstdio>
 
 
 
@@ -62,28 +62,27 @@ if (File.is_open()) {
 
 void ShowSex(fstream& File) {
 	PeopleInformation People;
+	char SexIndex[15] = "\0";
+	cout << "Введіть стать: "; cin.get(SexIndex,15);
 
 	File.open("PeopleInformation.dat", ios::out | ios::binary);
 
-
+	Shapka();
 	while (File.read((char*)&People, sizeof People)) {
 
-		cout << People.Number;
-		cout<<People.Name;
-		cout<<People.Surname;
-		cout<<People.
-		
-
+		if (People.Sex == SexIndex) {
+			cout << setw(1) << People.Number;
+			cout << setw(10) << People.Name;
+			cout << setw(10) << People.Surname;
+			cout << setw(10) << People.Sex;
+			cout << setw(10) << People.Height;
+			cout << setw(10) << People.Weight;
+			cout << setw(10) << People.ClothesNumber;
+			cout << setw(10) << People.ShoesNumber;
+			cout << setw(10) << endl;
+		}
 	}
+	File.close();
+	File.clear();
 }
-
-
-
-
-
-
-
-
-
-
-
+#endif
