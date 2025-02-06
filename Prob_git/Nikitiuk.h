@@ -1,9 +1,12 @@
 #pragma once
+
 #ifndef Nikitiuk
 #define Nikitiuk
-#include <iosrteam>
+
+#include <iostream>
+#include <iomanip>
 #include <fstream>
-#include "Dar'ev.h"
+
 using namespace std;
 
 void addtofile(){
@@ -15,9 +18,8 @@ void addtofile(){
 	int num;
 	cout << "К-ть, яку хочете дописати: "; cin >> num; cin.get();
 	cout << "Введите дані:\n";
-	for (i = 0; i <= num - 1; i++)
+	for (int i = 0; i <= num - 1; i++)
 	{
-		for (int i = 0; i < NumberPeople; i++) {
 		cout << "Введіть номер людини: "; cin >> inf.Number;
 		cout << "\nВведіть ім'я людини: "; cin.get(inf.Name, 50);
 		cout << "\nВведіть прізвище людини: "; cin.get(inf.Surname, 50);
@@ -28,7 +30,7 @@ void addtofile(){
 		cout << "\nВведіть номер взуття людини: "; cin >> inf.Number;
 	f2.write((char*)&inf, sizeof inf);
 	}
-	}
+
 	f1.close();
 	f2.close();
 
@@ -40,3 +42,5 @@ void addtofile(){
 void poshuk(char Surname, int Height, int ClothesNumber, int ShoesNumber, int Weight){
   for(
 }
+
+#endif
