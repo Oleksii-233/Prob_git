@@ -7,9 +7,11 @@
 using namespace std;
 
 void dozap(fstream file, PeopleInformation){
-cout<<"Äîçàïèñ â ôàéë ";
+cout<<"Ã„Ã®Ã§Ã Ã¯Ã¨Ã± Ã¢ Ã´Ã Ã©Ã« ";
   File.open("PeopleInformation.dat", ios::app, ios::binary);
   file<<"dozapus ";
   file.close;
 }
-void 
+void poshuk(char Surname, int Height, int ClothesNumber, int ShoesNumber, int Weight){
+  for(
+}
