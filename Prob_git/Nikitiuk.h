@@ -15,7 +15,7 @@ void addtofile(){
 	int num;
 	cout << "К-ть, яку хочете дописати: "; cin >> num; cin.get();
 	cout << "Введите дані:\n";
-	for (i = 0; i <= m - 1; i++)
+	for (i = 0; i <= num - 1; i++)
 	{
 		for (int i = 0; i < NumberPeople; i++) {
 		cout << "Введіть номер людини: "; cin >> inf.Number;
