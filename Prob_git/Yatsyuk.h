@@ -23,19 +23,24 @@ File.open("PeopleInformation.dat", ios::in, ios::binary);
 
 }
 
-void sortbysize(ifstream& file){
+void sortbysize(fstream& file){
 PeopleInformation inf;
-File.open("PeopleInformation.dat", ios::in, ios::binary);
+file.open("PeopleInformation.dat", ios::in, ios::binary);
   file.clear();
-	file.seekg(0);
-	if(inf.ClothesNumber>46 && inf.ShoesNumber<41){
+	file.seekg(0);	
 	cout<<"Прізвища людей, в яких ном. одягу більше 46 та розмір взуття менше 41:\n";	
+	if(inf.ClothesNumber>46 && inf.ShoesNumber<41){
   while (file.read((char*)&inf, sizeof inf))
-    {
-cout<<inf.Number<<"\t"<<inf.Surname<<endl;		
-    }
+    { cout<<inf.Number<<"\t"<<inf.Surname<<endl;}
 	}
 		file.close();
 
 }
+void sortaverage(ifstream& file){
+PeopleInformation inf;
+	File.open("PeopleInformation.dat", ios::in, ios::binary);
+
+	while (file.read((char*)&inf, sizeof inf))
+    { cout<<inf.Number<<"\t"<<inf.Surname<<endl;}
+	}
 }
