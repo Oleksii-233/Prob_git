@@ -5,9 +5,10 @@
 
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <string>
-#include <windows.h>
-#include <locale>
+
+
 
 using namespace std;
 struct PeopleInformation {
@@ -22,40 +23,67 @@ struct PeopleInformation {
 
 };
 
-void CreateFile(fstream& File);
 void WriteInFile(fstream& File);
 
-void CreateFile(fstream& File) {
-	File.open("PeopleInformation.dat", ios::out, ios::binary);
-	if (File.is_open()) {
-		cout << "Ôàéë ñòâîðåíî!" << endl;
-		File.close();
-	}
-	else cout << "Ôàéë íå ñòâîðåíî!" << endl;
-}
-void WriteInFile(fstream& File) {
-	PeopleInformation People[50];
-	int NumberPeople=0;
+void Shapka();
 
-	File.open("PeopleInformation.dat", ios::out, ios::binary);
-	cout << "Ââåä³òü ê³ëüê³ñòü ëþäåé: "; cin >> NumberPeople;
-	for (int i = 0; i < NumberPeople; i++) {
-		cout << "Ââåä³òü íîìåð ëþäèíè: "; cin >> People[i].Number;
-		cout << "Ââåä³òü ³ì'ÿ ëþäèíè: "; cin.get(People[i].Name, 50);
-		cout << "Ââåä³òü ïð³çâèùå ëþäèíè: "; cin.get(People[i].Surname, 50);
-		cout << "Ââåä³òü ñòàòü ëþäèíè: "; cin.get(People[i].Sex, 50);
-		cout << "Ââåä³òü çð³ñò ëþäèíè: "; cin >> People[i].Number;
-		cout << "Ââåä³òü âàãó ëþäèíè: "; cin >> People[i].Number;
-		cout << "Ââåä³òü íîìåð îäÿãó ëþäèíè: "; cin >> People[i].Number;
-		cout << "Ââåä³òü íîìåð âçóòòÿ ëþäèíè: "; cin >> People[i].Number;
+
+void Shapka() {
+	cout <<setw(1)<< "â„– Ð»ÑŽÐ´Ð¸Ð½Ð¸" << setw(10) << "Ð†Ð¼'Ñ" << setw(10) << "Ð¤Ð°Ð¼Ð¸Ð»Ñ–Ñ" << setw(10) << "Ð¡Ñ‚Ð°Ñ‚ÑŒ" << setw(10) << "Ð—Ñ€Ñ–ÑÑ‚" << setw(10) << "Ð’Ð°Ð³Ð°" << setw(10) << "â„– Ð¾Ð´ÐµÐ¶Ñ–" << setw(10) << "â„– Ð²Ð·ÑƒÑ‚Ñ‚Ñ" << endl;
+}
+
+void WriteInFile(fstream& File) {
+	PeopleInformation People;
+	int NumberPeople=0;
+	
+
+	File.open("PeopleInformation.dat", ios::out| ios::binary);
+
+if (File.is_open()) {
+		cout << "Ð¤Ð°Ð¹Ð» ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾!" << endl;
 	}
-	File.write((char*)People, sizeof People);
+	else cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾!" << endl;
+
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ð»ÑŽÐ´ÐµÐ¹: "; cin >> NumberPeople;
+	for (int i = 0; i < NumberPeople; i++) {
+		cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number;
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ–Ð¼'Ñ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin.get(People.Name, 50);
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ñ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin.get(People.Surname, 50);
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑŒ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin.get(People.Sex, 50);
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð·Ñ€Ñ–ÑÑ‚ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number;
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð²Ð°Ð³Ñƒ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number;
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð¾Ð´ÑÐ³Ñƒ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number;
+		cout << "\nÐ’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð²Ð·ÑƒÑ‚Ñ‚Ñ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number;
+	File.write((char*)&People, sizeof People);
+	}
 	File.close();
 	File.clear();
-
-
-
-
 }
 
-#endif
+void ShowSex(fstream& File) {
+	PeopleInformation People;
+
+	File.open("PeopleInformation.dat", ios::out | ios::binary);
+
+
+	while (File.read((char*)&People, sizeof People)) {
+
+		cout << People.Number;
+		cout<<People.Name;
+		cout<<People.Surname;
+		cout<<People.
+		
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
