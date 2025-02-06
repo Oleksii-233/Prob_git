@@ -98,4 +98,39 @@ int length;
 	file.close();
 }
 
+void addtofile(fstream& file){
+	PeopleInformation inf;
+	ifstream f1("PeopleInformation.dat", ios::binary);
+	//відкриваємо buffer.dat для запису
+	ofstream f2("PeopleInformation1.dat", ios::binary);
+	//в циклі читаємо дані і tovary.dat
+	//и записуємо в buffer.dat
+	while (f1.read((char*)&inf, sizeof inf))
+		f2.write((char*)&inf, sizeof inf);
+
+	//вводимо кількість товарів, що додаються
+	cout << "Введите кількість товарів: ";
+	cin >> m; cin.get();
+	//в циклі вводимо товари і дописуємо їх в bufer.dat 
+	cout << "Введите дані про товари:\n";
+	for (i = 0; i <= m - 1; i++)
+	{
+		cout << i + 1 << "-й товар:\n";
+		cout << "-шифр: "; cin.getline(tov.shifr, 10);
+		cout << "-название: "; cin.getline(tov.nazv, 20);
+		cout << "-цена: "; cin >> tov.сеna; cin.get();
+		f2.write((char*)&tov, sizeof tov);
+	}
+	//закриваємо обидва файли 
+	f1.close();
+	f2.close();
+
+	//видаляємо файл tovary.dat 
+	remove("tovary.dat");
+	//перейменовуємо файл buffer.dat в tovary.dat
+	rename("bufer.dat", "tovary.dat");
+
+
+}
+
 #endif
