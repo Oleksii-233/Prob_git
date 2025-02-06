@@ -77,6 +77,8 @@ double avweight=0, avheight=0;
 int length;
 	double avheight = avheight(file);
 	double avweight = avweight(file);
+	cout <<setw(3)<<"№"<< setw(10)<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
+
 	cout<<"Люди з ростом +-10% від середнього росту: \n";
 	while (file.read((char*)&inf, sizeof inf))
     { 
