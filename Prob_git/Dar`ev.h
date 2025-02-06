@@ -2,14 +2,11 @@
 #ifndef DARYEV
 #define DARYEV
 
-
 #include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <cstdio>
 #include <string>
-
-
 
 using namespace std;
 struct PeopleInformation {
@@ -21,13 +18,10 @@ struct PeopleInformation {
 	int Weight = 0;
 	int ClothesNumber = 0;
 	int ShoesNumber = 0;
-
 };
-
 void WriteInFile(fstream& File);
 void ShowSex(fstream& File);
 void Shapka();
-
 
 void Shapka() {
 	cout <<setw(1)<< "№ людини" << setw(10) << "Ім'я" << setw(10) << "Фамилія" << setw(10) << "Стать" << setw(10) << "Зріст" << setw(10) << "Вага" << setw(10) << "№ одежі" << setw(10) << "№ взуття" << endl;
@@ -37,7 +31,6 @@ void WriteInFile(fstream& File) {
 	PeopleInformation People;
 	int NumberPeople=0;
 	
-
 	File.open("PeopleInformation.dat", ios::out| ios::binary);
 
 if (File.is_open()) {
@@ -60,7 +53,6 @@ if (File.is_open()) {
 	File.close();
 	File.clear();
 }
-
 void ShowSex(fstream& File) {
 	PeopleInformation People;
 	char SexIndex[15] = "\0";
@@ -87,12 +79,21 @@ void ShowSex(fstream& File) {
 	File.clear();
 }
 void IndenticalHeightAndShoes(fstream& File) {
-	PeopleInformation People;
-	int IndexShoes = 0, IndexHeight = 0;
+	PeopleInformation People[20];
+	int IndexShoes = 0, IndexHeight = 0,counter=0;
 	fstream BuferFile;
 
 	File.open("PeopleInformation.dat", ios::out | ios::binary);
 	
+	while (File.read((char*)&People, sizeof People)) {
+		counter++;
+	}
+
+	for (int i = 0; i < counter - 1; i++) {
+		for (int j = i + 1; j < counter; j++) {
+			if
+		}
+	}
 	File.close();
 	File.clear();
 }
