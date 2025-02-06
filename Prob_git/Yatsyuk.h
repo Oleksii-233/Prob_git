@@ -2,8 +2,10 @@
 #indef Yatsiyk
 
 
-void readfromfile(ifstream& file, PeopleInformation inf){
-  file.open("z1.dat");
+void readfromfile(ifstream& file){
+ PeopleInformation inf[50];
+	int inf=0;
+	file.open("z1.dat");
   file1.clear();
 	file1.seekg(0);
   cout <<setw(3)<<"№"<< setw(10)<<<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
