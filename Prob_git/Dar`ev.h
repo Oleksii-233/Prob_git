@@ -30,7 +30,6 @@ void CreateFile(fstream& File) {
 	if (File.is_open()) {
 		cout << "Файл створено!" << endl;
 		File.close();
-		File.close();
 	}
 	else cout << "Файл не створено!" << endl;
 }
@@ -58,15 +57,5 @@ void WriteInFile(fstream& File) {
 
 
 }
-
-
-
-
-
-
-
-
-
-
 
 #endif

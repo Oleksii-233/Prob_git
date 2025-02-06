@@ -1,6 +1,8 @@
 #pragma once
+
 #ifndef Yatsiyk
 #define Yatsiyk
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -11,7 +13,7 @@ void readfromfile(fstream& file){
 file.open("PeopleInformation.dat", ios::in, ios::binary);
   file.clear();
 	file.seekg(0);
-  cout <<setw(3)<<"№"<< setw(10)<<<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
+  cout <<setw(3)<<"№"<< setw(10)<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
 	
   while (file.read((char*)&inf, sizeof inf))
     {
@@ -49,3 +51,5 @@ double avweight=0, avheight=0;
 	avheight+=inf.height;
     }
 }
+
+#endif

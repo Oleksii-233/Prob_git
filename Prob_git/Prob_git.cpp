@@ -1,14 +1,18 @@
-﻿#include <iostream>
-#include <Windows.h>
-#include <locale>
+﻿#include "Dar`ev.h"
+
+#include "Nikitiuk.h"
+#include "Yatsyuk.h"
 
 using namespace std;
 
 int main() {
+	
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
 	int ans;
+
+	fstream file, file_reg("reg.dat", ios::binary);
 
 	do {
 		cout << "Виберіть, що ви бажаєте зробити:\n0 - створення та запис до файлу,\n1 - прочитати данi iз файлу на екран,\n2 - Вивести записи за введеною статею,\n3 - Вивести прізвища, що мають однакову вагу і однаковий номер взуття" << endl;
@@ -20,10 +24,11 @@ int main() {
 
 		switch (ans) {
 		case 0: {
-			// Функція
+			CreateFile(file);
+			WriteInFile(file);
 		}break;
 		case 1: {
-			// Функція
+			readfromfile(file);
 		}break;
 		case 2: {
 			// Функція

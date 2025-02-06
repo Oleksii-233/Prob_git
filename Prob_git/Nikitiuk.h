@@ -7,7 +7,7 @@
 using namespace std;
 
 void dozap(fstream file, PeopleInformation){
-cout<<"Ð”Ð¾Ð·Ð°Ð¿Ð¸Ñ Ð² Ñ„Ð°Ð¹Ð» ";
+cout<<"Äîçàïèñ â ôàéë ";
   File.open("PeopleInformation.dat", ios::app, ios::binary);
   file<<"dozapus ";
   file.close;
