@@ -2,6 +2,8 @@
 
 #include "Nikitiuk.h"
 #include "Yatsyuk.h"
+#include "Windows.h"
+#include <locale>
 
 using namespace std;
 
@@ -24,23 +26,22 @@ int main() {
 
 		switch (ans) {
 		case 0: {
-			CreateFile(file);
 			WriteInFile(file);
 		}break;
 		case 1: {
 			readfromfile(file);
 		}break;
 		case 2: {
-			// Функція
+			ShowSex(file);
 		}break;
 		case 3: {
-			// Функція
+		// Даня робить там
 		}break;
 		case 4: {
-			// Функція
+			sortbysize(file);
 		}break;
 		case 5: {
-			// Функція
+			sortaverage(file);
 		}break;
 		case 6: {
 			// Функція
