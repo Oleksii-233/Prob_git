@@ -40,16 +40,50 @@ file.open("PeopleInformation.dat", ios::in, ios::binary);
 		file.close();
 
 }
+
+double avweight(fstream& file){
+PeopleInformation inf;
+	file.open("PeopleInformation.dat", ios::in, ios::binary);
+double avweight=0;
+int count;
+	while (file.read((char*)&inf, sizeof inf))
+    { 
+    	avweight+=inf.Weight;
+	count++;
+    }
+	return avweight/count;
+}
+
+double avheight(fstream& file){
+PeopleInformation inf;
+	file.open("PeopleInformation.dat", ios::in, ios::binary);
+double avheight=0;
+int count;
+	while (file.read((char*)&inf, sizeof inf))
+    { 
+    	avheight+=inf.Height;
+	count++;
+    }
+	return avheight/count;
+}
+
+
 void sortaverage(fstream& file){
-	int 
 	PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
 double avweight=0, avheight=0;
+int length;
+	double avheight = avheight(file);
+	double avweight = avweight(file);
+	cout<<"Л.ди з ростом +-10% від середнього росту: \n";
 	while (file.read((char*)&inf, sizeof inf))
     { 
-    	avweight+=inf.weight;
-	avheight+=inf.height;
+    	if(inf.Height<avheight*1.1 && inf.Height>avheight*0.9){
+	cout <<setw(3)<<inf.Number<< setw(10)<<inf.Surname<<setw(10)<<inf.Name<<setw(8)<<inf.Sex<<setw(5)<<inf.Height<<setw(5)<<inf.Weight<<setw(7)<<inf.ClothesNumber<<setw(8)<<inf.ShoesNumber<< endl;	
+
+	}
     }
+	
 }
 
 #endif
