@@ -36,7 +36,6 @@ cout<<inf.Number<<"\t"<<inf.Surname<<endl;
     }
 	}
 		file.close();
-		file.clear();
 
 }
 }
