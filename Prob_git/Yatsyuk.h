@@ -51,6 +51,7 @@ int count;
     	avweight+=inf.Weight;
 	count++;
     }
+	file.close();
 	return avweight/count;
 }
 
@@ -64,6 +65,7 @@ int count;
     	avheight+=inf.Height;
 	count++;
     }
+	file.close();
 	return avheight/count;
 }
 
@@ -75,15 +77,23 @@ double avweight=0, avheight=0;
 int length;
 	double avheight = avheight(file);
 	double avweight = avweight(file);
-	cout<<"Л.ди з ростом +-10% від середнього росту: \n";
+	cout<<"Люди з ростом +-10% від середнього росту: \n";
 	while (file.read((char*)&inf, sizeof inf))
     { 
     	if(inf.Height<avheight*1.1 && inf.Height>avheight*0.9){
 	cout <<setw(3)<<inf.Number<< setw(10)<<inf.Surname<<setw(10)<<inf.Name<<setw(8)<<inf.Sex<<setw(5)<<inf.Height<<setw(5)<<inf.Weight<<setw(7)<<inf.ClothesNumber<<setw(8)<<inf.ShoesNumber<< endl;	
-
 	}
-    }
 	
+    }
+	cout<<"Люди з вагою +-5% від середньої ваги: \n";
+	while (file.read((char*)&inf, sizeof inf))
+    { 
+    	if(inf.Weight<avweight*1.05 && inf.Weight>avweight*0.95){
+	cout <<setw(3)<<inf.Number<< setw(10)<<inf.Surname<<setw(10)<<inf.Name<<setw(8)<<inf.Sex<<setw(5)<<inf.Height<<setw(5)<<inf.Weight<<setw(7)<<inf.ClothesNumber<<setw(8)<<inf.ShoesNumber<< endl;	
+	}
+	
+    }
+	file.close();
 }
 
 #endif
