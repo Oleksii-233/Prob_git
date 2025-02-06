@@ -7,14 +7,15 @@
 #include <fstream>
 #include <iomanip>
 #include <cstdio>
+#include <string>
 
 
 
 using namespace std;
 struct PeopleInformation {
 	int Number = 0;
-	char Name[50] = "\0";
-	char Surname[50] = "\0";
+	char Name[100] = "\0";
+	char Surname[100] = "\0";
 	char Sex[50] = "\0";
 	int Height = 0;
 	int Weight = 0;
@@ -24,7 +25,7 @@ struct PeopleInformation {
 };
 
 void WriteInFile(fstream& File);
-
+void ShowSex(fstream& File);
 void Shapka();
 
 
@@ -82,6 +83,16 @@ void ShowSex(fstream& File) {
 			cout << setw(10) << endl;
 		}
 	}
+	File.close();
+	File.clear();
+}
+void IndenticalHeightAndShoes(fstream& File) {
+	PeopleInformation People;
+	int IndexShoes = 0, IndexHeight = 0;
+	fstream BuferFile;
+
+	File.open("PeopleInformation.dat", ios::out | ios::binary);
+	
 	File.close();
 	File.clear();
 }
