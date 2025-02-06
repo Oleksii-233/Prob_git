@@ -1,7 +1,10 @@
 #pragma once
 #ifndef Yatsiyk
 #define Yatsiyk
-
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include "DARIEV.h"
 
 void readfromfile(ifstream& file){
  PeopleInformation inf;
