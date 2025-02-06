@@ -107,12 +107,10 @@ void addtofile(fstream& file){
 	//и записуємо в buffer.dat
 	while (f1.read((char*)&inf, sizeof inf))
 		f2.write((char*)&inf, sizeof inf);
-
-	//вводимо кількість товарів, що додаються
-	cout << "Введите кількість товарів: ";
-	cin >> m; cin.get();
+	int num;
+	cout << "К-ть, яку хочете дописати: "; cin >> num; cin.get();
 	//в циклі вводимо товари і дописуємо їх в bufer.dat 
-	cout << "Введите дані про товари:\n";
+	cout << "Введите дані:\n";
 	for (i = 0; i <= m - 1; i++)
 	{
 		cout << i + 1 << "-й товар:\n";
