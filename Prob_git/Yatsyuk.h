@@ -1,5 +1,6 @@
 #pragma once
-#indef Yatsiyk
+#ifndef Yatsiyk
+#define Yatsiyk
 
 
 void readfromfile(ifstream& file){
