@@ -108,18 +108,20 @@ void sortaverage(fstream& file){
 	double avhe = avheight(file);
 	double avwe = avweight(file);
 
+	file.clear();
+	file.seekg(0);
+
 	cout << "Люди з ростом +-10% від середнього росту: \n";
-
 	Shapka();
-
 	while (file.read((char*)&inf, sizeof inf))
     	if(inf.Height <avhe*1.1 && inf.Height>avhe*0.9)
 			ShowPeople(inf);
 	
+	file.clear();
+	file.seekg(0);
+
 	cout<<"Люди з вагою +-5% від середньої ваги: \n";
-
 	Shapka();
-
 	while (file.read((char*)&inf, sizeof inf))
 		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95)
 			ShowPeople(inf);

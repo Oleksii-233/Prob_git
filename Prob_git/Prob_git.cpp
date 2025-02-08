@@ -6,8 +6,8 @@
 using namespace std;
 
 int main() {
-	SetConsoleCP(65001);
-	SetConsoleOutputCP(65001);
+	SetConsoleCP(12601);
+	SetConsoleOutputCP(12601);
 
 	int ans;
 
