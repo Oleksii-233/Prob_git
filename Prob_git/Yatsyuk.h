@@ -59,6 +59,7 @@ PeopleInformation inf;
 		cout << "Файл не відкритий." << endl;
 		exit(1);
 	}
+	
 
 	double avweight = 0.;
 	int count = 0;
@@ -68,6 +69,7 @@ PeopleInformation inf;
 	count++;
     }
 	file.close();
+
 	if (count == 0) {
 		cout << "Записи у файлі відсутні для підрахування середньої ваги." << endl;
 		return 0.;

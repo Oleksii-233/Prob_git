@@ -27,7 +27,7 @@ void ShowPeople(PeopleInformation inf);
 void EnterPeople(PeopleInformation& People);
 
 void Shapka() {
-	cout << setw(3) << "№" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "№ одежі" << setw(8) << "№ взуття" << endl;
+	cout << setw(3) << "N" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "Одяг" << setw(7) << "Взуття" << endl;
 }
 
 void ShowPeople(PeopleInformation inf) {
@@ -92,8 +92,8 @@ void ShowSex(fstream& File) {
 	}
 
 	if (k == 0) {
-		cout << "Людей заданої статі не знайдено." << endl;
 		system("cls");
+		cout << "Людей заданої статі не знайдено." << endl;
 	}
 
 	File.close();
