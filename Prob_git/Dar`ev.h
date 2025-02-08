@@ -108,16 +108,28 @@ void IndenticalHeightAndShoes(fstream& File) {
 	while (File.read((char*)&People, sizeof People))
 		counter++;
 	
-
+	int k = 0;
 	cout << setw(10) << "Прізвища" << setw(10) << "Вага" << setw(10) << "Номер взуття" << endl;
 	for (int i = 0; i < counter - 1; i++) {
+		int ind = 0;
 		for (int j = i + 1; j < counter; j++) {
 			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
-				cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
-
+				if (ind == 0) {
+					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
+					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+				}
+				else 
+					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+				ind++;
+				k++;
 			}
 		}
 	}
+
+	if (k == 0) {
+		cout << "Відсутні." << endl;
+	}
+
 	File.close();
 }
 #endif
