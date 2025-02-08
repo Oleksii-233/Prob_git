@@ -96,7 +96,7 @@ PeopleInformation inf;
 }
 
 
-void sortaverage(fstream& file){
+void sortaverage(fstream& file) {
 	PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
 
@@ -111,21 +111,33 @@ void sortaverage(fstream& file){
 	file.clear();
 	file.seekg(0);
 
+	int k = 0;
 	cout << "Люди з ростом +-10% від середнього росту: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
-    	if(inf.Height <avhe*1.1 && inf.Height>avhe*0.9)
+		if (inf.Height <avhe * 1.1 && inf.Height>avhe * 0.9) {
 			ShowPeople(inf);
-	
+			k++;
+		}
+
+	if (k == 0)
+		cout << "Відсутні." << endl;
+
 	file.clear();
 	file.seekg(0);
 
-	cout<<"Люди з вагою +-5% від середньої ваги: \n";
+	k = 0;
+	cout << "Люди з вагою +-5% від середньої ваги: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
-		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95)
+		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95) {
 			ShowPeople(inf);
+			k++;
+		}
 	
+	if (k == 0)
+		cout << "Відсутнію" << endl;
+
 	file.close();
 }
 
