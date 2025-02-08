@@ -50,6 +50,7 @@ int main() {
 			addtofile();
 		}break;
 		}
+		system("pause");
 	} while (ans >= 0 && ans <= 8);
 
 

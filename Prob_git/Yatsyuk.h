@@ -53,13 +53,9 @@ cout<<"Прізвища людей, в яких ном. одягу більше 
 
 double avweight(fstream& file){
 PeopleInformation inf;
-	file.open("PeopleInformation.dat", ios::in, ios::binary);
 
-	if (!file.is_open()) {
-		cout << "Файл не відкритий." << endl;
-		exit(1);
-	}
-	
+	file.clear();
+	file.seekg(0);
 
 	double avweight = 0.;
 	int count = 0;
@@ -68,7 +64,6 @@ PeopleInformation inf;
     avweight+=inf.Weight;
 	count++;
     }
-	file.close();
 
 	if (count == 0) {
 		cout << "Записи у файлі відсутні для підрахування середньої ваги." << endl;
@@ -80,12 +75,9 @@ PeopleInformation inf;
 
 double avheight(fstream& file){
 PeopleInformation inf;
-	file.open("PeopleInformation.dat", ios::in, ios::binary);
 
-	if (!file.is_open()) {
-		cout << "Файл не відкритий." << endl;
-		exit(1);
-	}
+	file.clear();
+	file.seekg(0);
 
 	double avheight = 0;
 	int count = 0;
@@ -94,7 +86,6 @@ PeopleInformation inf;
     	avheight+=inf.Height;
 		count++;
     }
-	file.close();
 
 	if (count == 0) {
 		cout << "Записи у файлі відсутні для підрахування середнього росту." << endl;
