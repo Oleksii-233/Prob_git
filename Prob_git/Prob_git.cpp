@@ -1,25 +1,23 @@
 ﻿#include "Windows.h"
 
-#include <locale>
 #include "Dar`ev.h"
 #include "Nikitiuk.h"
 #include "Yatsyuk.h"
 using namespace std;
 
 int main() {
-	
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	SetConsoleCP(65001);
+	SetConsoleOutputCP(65001);
 
 	int ans;
 
 	fstream file, file_reg("reg.dat", ios::binary);
 
 	do {
-		cout << "Виберіть, що ви бажаєте зробити:\n0 - створення та запис до файлу,\n1 - прочитати данi iз файлу на екран,\n2 - Вивести записи за введеною статею,\n3 - Вивести прізвища, що мають однакову вагу і однаковий номер взуття" << endl;
-		cout << "4 - Вивести прізвища, що мають номер одежі більший за 46 і номер взуття менший 41,\n5 - Вивести середню вагу та ріст людей, які мають похибку ваги в межах 5% та людей, які мають похибку в ростові в межах 10 %" << endl;
-		cout << "6 - Вивести прізвище людини, що має найменший ріст з найменшим номером одежі та людину з найбільшим номером взуття і найбільшою масою,\n7 - впорядкувати записи в файлі за вибором (прізвище чи ім'я),\n8 - дозаписати файл" << endl;
-		cout << "Вихід - Будь - яке інше значення; " << endl;
+		cout << "Choose what you want to do:\n0 - Create and write a file,\n1 - Read the file to the screen,\n2 - Show records of a specific gender,\n3 - Have the same weight and shoe number" << endl;
+		cout << "4 - The clothing number is larger than 46 and the shoe size is smaller than 41,\n5 - People who are close to the average for weight and size" << endl;
+		cout << "6 - People with the smallest shoe size and clothing number and people with the largest weight and shoe number,\n7 - Sort the file by last name or first name,\n8 - Add file" << endl;
+		cout << "Enter another number to exit" << endl;
 
 		cin >> ans;
 

@@ -19,12 +19,18 @@ struct PeopleInformation {
 	int ClothesNumber = 0;
 	int ShoesNumber = 0;
 };
+
 void WriteInFile(fstream& File);
 void ShowSex(fstream& File);
 void Shapka();
+void ShowPeople(PeopleInformation inf);
 
 void Shapka() {
-	cout <<setw(1)<< "№ людини" << setw(10) << "Ім'я" << setw(10) << "Фамилія" << setw(10) << "Стать" << setw(10) << "Зріст" << setw(10) << "Вага" << setw(10) << "№ одежі" << setw(10) << "№ взуття" << endl;
+	cout << setw(3) << "№" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "№ одежі" << setw(8) << "№ взуття" << endl;
+}
+
+void ShowPeople(PeopleInformation inf) {
+	cout << setw(3) << inf.Number << setw(10) << inf.Surname << setw(10) << inf.Name << setw(8) << inf.Sex << setw(5) << inf.Height << setw(5) << inf.Weight << setw(7) << inf.ClothesNumber << setw(8) << inf.ShoesNumber << endl;
 }
 
 void WriteInFile(fstream& File) {
@@ -33,10 +39,10 @@ void WriteInFile(fstream& File) {
 	
 	File.open("PeopleInformation.dat", ios::out| ios::binary);
 
-if (File.is_open()) {
-		cout << "Файл створено!" << endl;
-	}
-	else cout << "Файл не створено!" << endl;
+if (!File.is_open()) {
+		cout << "Файл не створено!" << endl;
+		exit(1);
+}
 
 	cout << "Введіть кількість людей: "; cin >> NumberPeople;
 	for (int i = 0; i < NumberPeople; i++) {
@@ -44,38 +50,38 @@ if (File.is_open()) {
 		cout << "\nВведіть ім'я людини: "; cin.get(People.Name, 50);
 		cout << "\nВведіть прізвище людини: "; cin.get(People.Surname, 50);
 		cout << "\nВведіть стать людини: "; cin.get(People.Sex, 50);
-		cout << "\nВведіть зріст людини: "; cin >> People.Number;
-		cout << "\nВведіть вагу людини: "; cin >> People.Number;
-		cout << "\nВведіть номер одягу людини: "; cin >> People.Number;
-		cout << "\nВведіть номер взуття людини: "; cin >> People.Number;
+		cout << "\nВведіть зріст людини: "; cin >> People.Height;
+		cout << "\nВведіть вагу людини: "; cin >> People.Weight;
+		cout << "\nВведіть номер одягу людини: "; cin >> People.ClothesNumber;
+		cout << "\nВведіть номер взуття людини: "; cin >> People.ShoesNumber;
 	File.write((char*)&People, sizeof People);
 	}
+
 	File.close();
-	File.clear();
+
 }
 void ShowSex(fstream& File) {
 	PeopleInformation People;
 	char SexIndex[15] = "\0";
 	cout << "Введіть стать: "; cin.get(SexIndex,15);
+	int k = 0;
 
-	File.open("PeopleInformation.dat", ios::out | ios::binary);
+	File.open("PeopleInformation.dat", ios::in | ios::binary);
 
 	Shapka();
 	while (File.read((char*)&People, sizeof People)) {
 
-		if (People.Sex == SexIndex) {
-			cout << setw(1) << People.Number;
-			cout << setw(10) << People.Name;
-			cout << setw(10) << People.Surname;
-			cout << setw(10) << People.Sex;
-			cout << setw(10) << People.Height;
-			cout << setw(10) << People.Weight;
-			cout << setw(10) << People.ClothesNumber;
-			cout << setw(10) << People.ShoesNumber;
-			cout << setw(10) << endl;
+		if (strcmp(People.Sex,SexIndex) == 0) {
+			ShowPeople(People);
+			k++;
 		}
 	}
+
+	if (k == 0) {
+		cout << "Людей заданої статі не знайдено." << endl;
+		system("cls");
+	}
+
 	File.close();
-	File.clear();
 }
 #endif
