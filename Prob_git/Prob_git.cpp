@@ -35,7 +35,7 @@ int main() {
 			ShowSex(file);
 		}break;
 		case 3: {
-		// Даня робить там
+			IndenticalHeightAndShoes(file);
 		}break;
 		case 4: {
 			sortbysize(file);

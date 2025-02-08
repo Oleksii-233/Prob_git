@@ -80,18 +80,20 @@ void ShowSex(fstream& File) {
 }
 void IndenticalHeightAndShoes(fstream& File) {
 	PeopleInformation People[20];
-	int IndexShoes = 0, IndexHeight = 0,counter=0;
-	fstream BuferFile;
+	int counter=0;
 
 	File.open("PeopleInformation.dat", ios::out | ios::binary);
 	
 	while (File.read((char*)&People, sizeof People)) {
 		counter++;
 	}
-
+	cout << setw(1) << "Прізвища" << setw(10) << "Вага" << setw(10) << "Номер взуття" << endl;
 	for (int i = 0; i < counter - 1; i++) {
 		for (int j = i + 1; j < counter; j++) {
-			if
+			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
+				cout << setw(1) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
+
+			}
 		}
 	}
 	File.close();
