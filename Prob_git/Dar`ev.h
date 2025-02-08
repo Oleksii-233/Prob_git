@@ -36,13 +36,13 @@ void ShowPeople(PeopleInformation inf) {
 
 void EnterPeople(PeopleInformation& People) {
 	cout << "Введіть номер людини: "; cin >> People.Number; cin.ignore();
-	cout << "\nВведіть ім'я людини: "; cin.getline(People.Name, 50);
-	cout << "\nВведіть прізвище людини: "; cin.getline(People.Surname, 50);
-	cout << "\nВведіть стать людини: "; cin.getline(People.Sex, 50);
-	cout << "\nВведіть зріст людини: "; cin >> People.Height;
-	cout << "\nВведіть вагу людини: "; cin >> People.Weight;
-	cout << "\nВведіть номер одягу людини: "; cin >> People.ClothesNumber;
-	cout << "\nВведіть номер взуття людини: "; cin >> People.ShoesNumber;
+	cout << "Введіть ім'я людини: "; cin.getline(People.Name, 50);
+	cout << "Введіть прізвище людини: "; cin.getline(People.Surname, 50);
+	cout << "Введіть стать людини: "; cin.getline(People.Sex, 50);
+	cout << "Введіть зріст людини: "; cin >> People.Height;
+	cout << "Введіть вагу людини: "; cin >> People.Weight;
+	cout << "Введіть номер одягу людини: "; cin >> People.ClothesNumber;
+	cout << "Введіть номер взуття людини: "; cin >> People.ShoesNumber;
 }
 
 void WriteInFile(fstream& File) {
@@ -69,6 +69,7 @@ if (!File.is_open()) {
 	File.close();
 
 }
+
 void ShowSex(fstream& File) {
 	PeopleInformation People;
 	char SexIndex[15] = "\0";
@@ -100,13 +101,15 @@ void ShowSex(fstream& File) {
 }
 
 void IndenticalHeightAndShoes(fstream& File) {
-	PeopleInformation People[20];
+	PeopleInformation People[15], p;
 	int counter = 0;
 
 	File.open("PeopleInformation.dat", ios::in | ios::binary);
 
-	while (File.read((char*)&People, sizeof People))
-		counter++;
+	while (File.read((char*)&p, sizeof p))
+		People[counter++] = p;
+	
+
 	
 	int k = 0;
 	cout << setw(10) << "Прізвища" << setw(10) << "Вага" << setw(10) << "Номер взуття" << endl;
