@@ -24,6 +24,7 @@ void WriteInFile(fstream& File);
 void ShowSex(fstream& File);
 void Shapka();
 void ShowPeople(PeopleInformation inf);
+void EnterPeople(PeopleInformation& People);
 
 void Shapka() {
 	cout << setw(3) << "№" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "№ одежі" << setw(8) << "№ взуття" << endl;
@@ -31,6 +32,17 @@ void Shapka() {
 
 void ShowPeople(PeopleInformation inf) {
 	cout << setw(3) << inf.Number << setw(10) << inf.Surname << setw(10) << inf.Name << setw(8) << inf.Sex << setw(5) << inf.Height << setw(5) << inf.Weight << setw(7) << inf.ClothesNumber << setw(8) << inf.ShoesNumber << endl;
+}
+
+void EnterPeople(PeopleInformation& People) {
+	cout << "Введіть номер людини: "; cin >> People.Number; cin.ignore();
+	cout << "\nВведіть ім'я людини: "; cin.getline(People.Name, 50);
+	cout << "\nВведіть прізвище людини: "; cin.getline(People.Surname, 50);
+	cout << "\nВведіть стать людини: "; cin.getline(People.Sex, 50);
+	cout << "\nВведіть зріст людини: "; cin >> People.Height;
+	cout << "\nВведіть вагу людини: "; cin >> People.Weight;
+	cout << "\nВведіть номер одягу людини: "; cin >> People.ClothesNumber;
+	cout << "\nВведіть номер взуття людини: "; cin >> People.ShoesNumber;
 }
 
 void WriteInFile(fstream& File) {
@@ -45,16 +57,13 @@ if (!File.is_open()) {
 }
 
 	cout << "Введіть кількість людей: "; cin >> NumberPeople;
+
 	for (int i = 0; i < NumberPeople; i++) {
-		cout << "Введіть номер людини: "; cin >> People.Number; cin.ignore();
-		cout << "\nВведіть ім'я людини: "; cin.getline(People.Name, 50);
-		cout << "\nВведіть прізвище людини: "; cin.getline(People.Surname, 50);
-		cout << "\nВведіть стать людини: "; cin.getline(People.Sex, 50);
-		cout << "\nВведіть зріст людини: "; cin >> People.Height;
-		cout << "\nВведіть вагу людини: "; cin >> People.Weight;
-		cout << "\nВведіть номер одягу людини: "; cin >> People.ClothesNumber;
-		cout << "\nВведіть номер взуття людини: "; cin >> People.ShoesNumber;
+	
+	EnterPeople(People);
+	
 	File.write((char*)&People, sizeof People);
+
 	}
 
 	File.close();
