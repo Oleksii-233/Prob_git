@@ -40,7 +40,7 @@ if (File.is_open()) {
 
 	cout << "Введіть кількість людей: "; cin >> NumberPeople;
 	for (int i = 0; i < NumberPeople; i++) {
-		cout << "Введіть номер людини: "; cin >> People.Number;
+		cout << "Введіть номер людини: "; cin >> People.Number; cin.ignore();
 		cout << "\nВведіть ім'я людини: "; cin.get(People.Name, 50);
 		cout << "\nВведіть прізвище людини: "; cin.get(People.Surname, 50);
 		cout << "\nВведіть стать людини: "; cin.get(People.Sex, 50);
@@ -73,25 +73,6 @@ void ShowSex(fstream& File) {
 			cout << setw(10) << People.ClothesNumber;
 			cout << setw(10) << People.ShoesNumber;
 			cout << setw(10) << endl;
-		}
-	}
-	File.close();
-	File.clear();
-}
-void IndenticalHeightAndShoes(fstream& File) {
-	PeopleInformation People[20];
-	int IndexShoes = 0, IndexHeight = 0,counter=0;
-	fstream BuferFile;
-
-	File.open("PeopleInformation.dat", ios::out | ios::binary);
-	
-	while (File.read((char*)&People, sizeof People)) {
-		counter++;
-	}
-
-	for (int i = 0; i < counter - 1; i++) {
-		for (int j = i + 1; j < counter; j++) {
-			if
 		}
 	}
 	File.close();

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include "Dar`ev.h"
 
 using namespace std;
 
@@ -38,9 +39,6 @@ void addtofile(){
 	rename("PeopleInformation1.dat", "PeopleInformation.dat");
 
 
-}
-void poshuk(char Surname, int Height, int ClothesNumber, int ShoesNumber, int Weight){
-  for(
 }
 
 #endif

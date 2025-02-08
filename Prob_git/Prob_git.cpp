@@ -1,10 +1,9 @@
-﻿#include "Dar`ev.h"
+﻿#include "Windows.h"
 
+#include <locale>
+#include "Dar`ev.h"
 #include "Nikitiuk.h"
 #include "Yatsyuk.h"
-#include "Windows.h"
-#include <locale>
-
 using namespace std;
 
 int main() {

@@ -35,7 +35,7 @@ file.open("PeopleInformation.dat", ios::in, ios::binary);
   while (file.read((char*)&inf, sizeof(inf)))
   { if(inf.ClothesNumber>46 && inf.ShoesNumber<41){
 	    cout<<inf.Number<<"\t"<<inf.Surname<<endl;}
-	}
+  }
 		file.close();
 
 }
@@ -44,7 +44,7 @@ double avweight(fstream& file){
 PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
 double avweight=0;
-int count;
+int count = 0;
 	while (file.read((char*)&inf, sizeof inf))
     { 
     avweight+=inf.Weight;
@@ -58,7 +58,7 @@ double avheight(fstream& file){
 PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
 double avheight=0;
-int count;
+int count = 0;
 	while (file.read((char*)&inf, sizeof inf))
     { 
     	avheight+=inf.Height;
@@ -93,10 +93,6 @@ void sortaverage(fstream& file){
 	
     }
 	file.close();
-}
-
-void (){
-	
 }
 
 #endif
