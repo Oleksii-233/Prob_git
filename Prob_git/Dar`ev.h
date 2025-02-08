@@ -47,9 +47,9 @@ if (!File.is_open()) {
 	cout << "Введіть кількість людей: "; cin >> NumberPeople;
 	for (int i = 0; i < NumberPeople; i++) {
 		cout << "Введіть номер людини: "; cin >> People.Number; cin.ignore();
-		cout << "\nВведіть ім'я людини: "; cin.get(People.Name, 50);
-		cout << "\nВведіть прізвище людини: "; cin.get(People.Surname, 50);
-		cout << "\nВведіть стать людини: "; cin.get(People.Sex, 50);
+		cout << "\nВведіть ім'я людини: "; cin.getline(People.Name, 50);
+		cout << "\nВведіть прізвище людини: "; cin.getline(People.Surname, 50);
+		cout << "\nВведіть стать людини: "; cin.getline(People.Sex, 50);
 		cout << "\nВведіть зріст людини: "; cin >> People.Height;
 		cout << "\nВведіть вагу людини: "; cin >> People.Weight;
 		cout << "\nВведіть номер одягу людини: "; cin >> People.ClothesNumber;
@@ -63,10 +63,15 @@ if (!File.is_open()) {
 void ShowSex(fstream& File) {
 	PeopleInformation People;
 	char SexIndex[15] = "\0";
-	cout << "Введіть стать: "; cin.get(SexIndex,15);
+	cout << "Введіть стать: "; cin.ignore(); cin.get(SexIndex, 15);
 	int k = 0;
 
 	File.open("PeopleInformation.dat", ios::in | ios::binary);
+
+	if (!File.is_open()) {
+		cout << "Файл не відкрито!" << endl;
+		exit(1);
+	}
 
 	Shapka();
 	while (File.read((char*)&People, sizeof People)) {
