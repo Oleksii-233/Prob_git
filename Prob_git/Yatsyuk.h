@@ -54,55 +54,83 @@ cout<<"Прізвища людей, в яких ном. одягу більше 
 double avweight(fstream& file){
 PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
-double avweight=0;
-int count = 0;
+
+	if (!file.is_open()) {
+		cout << "Файл не відкритий." << endl;
+		exit(1);
+	}
+
+	double avweight = 0.;
+	int count = 0;
 	while (file.read((char*)&inf, sizeof inf))
     { 
     avweight+=inf.Weight;
 	count++;
     }
 	file.close();
-	return avweight/count;
+	if (count == 0) {
+		cout << "Записи у файлі відсутні для підрахування середньої ваги." << endl;
+		return 0.;
+	}
+	else
+		return avweight / count;
 }
 
 double avheight(fstream& file){
 PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
-double avheight=0;
-int count = 0;
+
+	if (!file.is_open()) {
+		cout << "Файл не відкритий." << endl;
+		exit(1);
+	}
+
+	double avheight = 0;
+	int count = 0;
 	while (file.read((char*)&inf, sizeof inf))
     { 
     	avheight+=inf.Height;
-	count++;
+		count++;
     }
 	file.close();
-	return avheight/count;
+
+	if (count == 0) {
+		cout << "Записи у файлі відсутні для підрахування середнього росту." << endl;
+		return 0.;
+	}
+	else
+		return avheight / count;
 }
 
 
 void sortaverage(fstream& file){
 	PeopleInformation inf;
 	file.open("PeopleInformation.dat", ios::in, ios::binary);
+
+	if (!file.is_open()) {
+		cout << "Файл не відкритий." << endl;
+		exit(1);
+	}
+
 	double avhe = avheight(file);
 	double avwe = avweight(file);
-	cout <<setw(3)<<"№"<< setw(10)<<setw(10)<<"Ім'я"<<setw(8)<<"Стать"<<setw(5)<<"Ріст"<<setw(5)<<"Вага"<<setw(7)<<"№ одежі"<<setw(8)<<"№ взуття"<< endl;	
 
-	cout<<"Люди з ростом +-10% від середнього росту: \n";
+	cout << "Люди з ростом +-10% від середнього росту: \n";
+
+	Shapka();
+
 	while (file.read((char*)&inf, sizeof inf))
-    { 
-    	if(inf.Height <avhe*1.1 && inf.Height>avhe*0.9){
-	cout <<setw(3)<<inf.Number<< setw(10)<<inf.Surname<<setw(10)<<inf.Name<<setw(8)<<inf.Sex<<setw(5)<<inf.Height<<setw(5)<<inf.Weight<<setw(7)<<inf.ClothesNumber<<setw(8)<<inf.ShoesNumber<< endl;	
-	}
+    	if(inf.Height <avhe*1.1 && inf.Height>avhe*0.9)
+			ShowPeople(inf);
 	
-    }
 	cout<<"Люди з вагою +-5% від середньої ваги: \n";
+
+	Shapka();
+
 	while (file.read((char*)&inf, sizeof inf))
-    { 
-    	if(inf.Weight<avwe*1.05 && inf.Weight>avwe*0.95){
-	cout <<setw(3)<<inf.Number<< setw(10)<<inf.Surname<<setw(10)<<inf.Name<<setw(8)<<inf.Sex<<setw(5)<<inf.Height<<setw(5)<<inf.Weight<<setw(7)<<inf.ClothesNumber<<setw(8)<<inf.ShoesNumber<< endl;	
-	}
+		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95)
+			ShowPeople(inf);
 	
-    }
 	file.close();
 }
 
