@@ -10,7 +10,8 @@
 #include "Protocol.h"
 
 void readfromfile(fstream& file){
-PeopleInformation inf;
+
+	PeopleInformation inf;
 
 file.open("PeopleInformation.dat", ios::in, ios::binary);
 
@@ -19,11 +20,19 @@ if (!file.is_open()) {
 	exit(1);
 }
 
+p_Inic();
+
+p_Add("Читання всього файлу на екран.");
+
   Shapka();	
-  while (file.read((char*)&inf, sizeof(inf)))
+  while (file.read((char*)&inf, sizeof(inf))) {
+	  p_Add(inf);
 	  ShowPeople(inf);
-		
-file.close();
+  }
+
+  file.close();
+  p_Close();
+
 }
 
 void sortbysize(fstream& file){
@@ -35,20 +44,26 @@ if (!file.is_open()) {
 	cout << "Не вдалось відкрити файл." << endl;
 	exit(1);
 }
-	
+p_Inic();
+p_Add("Люди із потрібним номером одягу і взуття.");
+
 cout<<"Прізвища людей, в яких ном. одягу більше 46 та розмір взуття менше 41:\n";		
   while (file.read((char*)&inf, sizeof(inf)))
   { 
 	  if(inf.ClothesNumber>46 && inf.ShoesNumber<41){
+		  p_Add(inf);
 		  cout << inf.Number << "\t" << inf.Surname << endl;
-	  k++;
+		  k++;
 	  }
   }
 
-  if (k == 0) 
+  if (k == 0) {
 	  cout << "Відсутні..." << endl;
-  
+	  p_Add("Такі люди відсутні.");
+  }
+
    file.close();
+   p_Close();
 
 }
 
@@ -106,6 +121,8 @@ void sortaverage(fstream& file) {
 		exit(1);
 	}
 
+	p_Inic();
+
 	double avhe = avheight(file);
 	double avwe = avweight(file);
 
@@ -113,33 +130,42 @@ void sortaverage(fstream& file) {
 	file.seekg(0);
 
 	int k = 0;
+	p_Add("Люди в межах середнього росту.");
 	cout << "Люди з ростом +-10% від середнього росту: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
 		if (inf.Height <avhe * 1.1 && inf.Height>avhe * 0.9) {
+			p_Add(inf);
 			ShowPeople(inf);
 			k++;
 		}
 
-	if (k == 0)
+	if (k == 0) {
+		p_Add("Такі люди відсутні.");
 		cout << "Відсутні." << endl;
-
+	}
 	file.clear();
 	file.seekg(0);
 
 	k = 0;
+	p_Add("Люди в межах середньої ваги.");
 	cout << "Люди з вагою +-5% від середньої ваги: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
 		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95) {
+			p_Add(inf);
 			ShowPeople(inf);
 			k++;
 		}
 	
-	if (k == 0)
+	if (k == 0) {
+		p_Add("Такі люди відсутні.");
 		cout << "Відсутнію" << endl;
+	}
 
 	file.close();
+	p_Close();
+
 }
 
 #endif

@@ -21,6 +21,9 @@ void addtofile(){
 		exit(1);
 	}
 
+	p_Inic();
+	p_Add("Додавання до файлу.");
+
 	while (f1.read((char*)&inf, sizeof inf))
 		f2.write((char*)&inf, sizeof inf);
 
@@ -30,11 +33,13 @@ void addtofile(){
 	for (int i = 0; i <= num - 1; i++)
 	{
 		EnterPeople(inf);
+		p_Add(inf);
 		f2.write((char*)&inf, sizeof inf);
 	}
 
 	f1.close();
 	f2.close();
+	p_Close();
 
 	remove("PeopleInformation.dat");
 	rename("PeopleInformation1.dat", "PeopleInformation.dat");

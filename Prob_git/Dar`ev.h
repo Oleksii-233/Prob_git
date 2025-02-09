@@ -49,19 +49,21 @@ if (!File.is_open()) {
 		exit(1);
 }
 
+	p_Inic();
+	p_Add("Файл створено");
+
 	cout << "Введіть кількість людей: "; cin >> NumberPeople;
 
 	for (int i = 0; i < NumberPeople; i++) {
 	
 	EnterPeople(People);
-	
+	p_Add(People);
 	File.write((char*)&People, sizeof People);
 
 	}
 
 	File.close();
-
-
+	p_Close();
 }
 
 void ShowSex(fstream& File) {
@@ -77,10 +79,14 @@ void ShowSex(fstream& File) {
 		exit(1);
 	}
 
+	p_Inic();
+	p_Add("Люди заданої статі.");
+
 	Shapka();
 	while (File.read((char*)&People, sizeof People)) {
 
 		if (strcmp(People.Sex,SexIndex) == 0) {
+			p_Add(People);
 			ShowPeople(People);
 			k++;
 		}
@@ -89,9 +95,11 @@ void ShowSex(fstream& File) {
 	if (k == 0) {
 		system("cls");
 		cout << "Людей заданої статі не знайдено." << endl;
+		p_Add("Люди заданої статі відсутні.");
 	}
 
 	File.close();
+	p_Close();
 }
 
 void IndenticalHeightAndShoes(fstream& File) {
@@ -100,11 +108,19 @@ void IndenticalHeightAndShoes(fstream& File) {
 
 	File.open("PeopleInformation.dat", ios::in | ios::binary);
 
+	if (!File.is_open()) {
+		cout << "Не вдалось відкрити файл." << endl;
+		exit(1);
+	}
+
+	p_Inic();
+
 	while (File.read((char*)&p, sizeof p))
 		People[counter++] = p;
 	
 
-	
+	p_Add("Люди однакової ваги та номеру взуття.");
+
 	int k = 0;
 	cout << setw(10) << "Прізвища" << setw(10) << "Вага" << setw(10) << "Номер взуття" << endl;
 	for (int i = 0; i < counter - 1; i++) {
@@ -112,11 +128,14 @@ void IndenticalHeightAndShoes(fstream& File) {
 		for (int j = i + 1; j < counter; j++) {
 			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
 				if (ind == 0) {
+					p_Add(People[i]); p_Add(People[j]);
 					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
 					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
 				}
-				else 
+				else {
 					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+					p_Add(People[j]);
+				}
 				ind++;
 				k++;
 			}
@@ -125,6 +144,7 @@ void IndenticalHeightAndShoes(fstream& File) {
 
 	if (k == 0) {
 		cout << "Відсутні." << endl;
+		p_Add("Люди з однаковим номером ваги та взуття відстуні.");
 	}
 
 	File.close();
