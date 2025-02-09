@@ -9,6 +9,14 @@
 #include "Dar`ev.h"
 #include "Protocol.h"
 
+void readfromfile(fstream& file);
+
+void sortbysize(fstream& file);
+double avweight(fstream& file);
+double avheight(fstream& file);
+void sortaverage(fstream& file);
+
+
 void readfromfile(fstream& file){
 
 	PeopleInformation inf;
@@ -110,7 +118,6 @@ PeopleInformation inf;
 	else
 		return avheight / count;
 }
-
 
 void sortaverage(fstream& file) {
 	PeopleInformation inf;

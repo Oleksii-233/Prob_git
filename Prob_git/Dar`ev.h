@@ -18,6 +18,7 @@ void ShowSex(fstream& File);
 void Shapka();
 void ShowPeople(PeopleInformation inf);
 void EnterPeople(PeopleInformation& People);
+void IndenticalHeightAndShoes(fstream& File);
 
 void Shapka() {
 	cout << setw(3) << "N" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "Одяг" << setw(7) << "Взуття" << endl;
