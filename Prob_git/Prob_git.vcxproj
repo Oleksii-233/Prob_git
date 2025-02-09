@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="Dar`ev.h" />
     <ClInclude Include="Nikitiuk.h" />
+    <ClInclude Include="Protocol.h" />
     <ClInclude Include="Yatsyuk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

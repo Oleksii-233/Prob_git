@@ -7,18 +7,11 @@
 #include <iomanip>
 #include <cstdio>
 #include <string>
+#include "Protocol.h"
 
 using namespace std;
-struct PeopleInformation {
-	int Number = 0;
-	char Name[100] = "\0";
-	char Surname[100] = "\0";
-	char Sex[50] = "\0";
-	int Height = 0;
-	int Weight = 0;
-	int ClothesNumber = 0;
-	int ShoesNumber = 0;
-};
+
+
 
 void WriteInFile(fstream& File);
 void ShowSex(fstream& File);
@@ -67,6 +60,7 @@ if (!File.is_open()) {
 	}
 
 	File.close();
+
 
 }
 

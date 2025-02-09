@@ -3,15 +3,16 @@
 #include "Dar`ev.h"
 #include "Nikitiuk.h"
 #include "Yatsyuk.h"
+#include "Protocol.h"
+
 using namespace std;
 
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	fstream file;
 	int ans;
-
-	fstream file, file_reg("reg.dat", ios::binary);
 
 	do {
 		cout << "Choose what you want to do:\n0 - Create and write a file,\n1 - Read the file to the screen,\n2 - Show records of a specific gender,\n3 - Have the same weight and shoe number" << endl;

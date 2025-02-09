@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <fstream>
 #include "Dar`ev.h"
+#include "Protocol.h"
 
 void readfromfile(fstream& file){
 PeopleInformation inf;
