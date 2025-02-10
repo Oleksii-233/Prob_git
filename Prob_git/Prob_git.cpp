@@ -42,10 +42,10 @@ int main() {
 			sortaverage(file);
 		}break;
 		case 6: {
-			// Функція
+			ShowSmall();
 		}break;
 		case 7: {
-			// Функція
+			My_Sort();
 		}break;
 		case 8: {
 			addtofile();
@@ -56,3 +56,4 @@ int main() {
 
 
 }
+

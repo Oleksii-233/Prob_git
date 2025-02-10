@@ -14,6 +14,12 @@ using namespace std;
 void addtofile();
 void My_Swap(PeopleInformation& p0, PeopleInformation& p1);
 void My_Sort();
+void ShowSmall();
+double My_Min(PeopleInformation* p, int len);
+double My_Max(PeopleInformation* p, int len);
+void My_Sort_Min(PeopleInformation* p, int len);
+void My_Sort_Max(PeopleInformation* p, int len);
+void ShowArr(PeopleInformation* p, int len);
 
 void addtofile(){
 	PeopleInformation inf;
@@ -108,3 +114,82 @@ void My_Sort() {
 
 }
 #endif
+
+double My_Min(PeopleInformation* p, int len) {
+	if (len == 0)
+		exit(1);
+
+	double min = p[0].ClothesNumber;
+
+	for (int i = 1; i < len; i++)
+		if (min > p[i].ClothesNumber)
+			min = p[i].ClothesNumber;
+
+	return min;
+}
+
+double My_Max(PeopleInformation* p, int len) {
+	if (len == 0)
+		exit(1);
+	double max = p[0].ShoesNumber;
+
+	for (int i = 1; i < len; i++)
+		if (max < p[i].ShoesNumber)
+			max = p[i].ShoesNumber;
+
+	return max;
+}
+
+void My_Sort_Min(PeopleInformation* p, int len) {
+	for (int i = 0; i < len - 1; i++)
+		for (int j = i + 1; j < len; j++)
+			if (p[i].Height > p[j].Height)
+				My_Swap(p[i], p[j]);
+}
+
+void My_Sort_Max(PeopleInformation* p, int len) {
+	for (int i = 0; i < len - 1; i++)
+		for (int j = i + 1; j < len; j++)
+			if (p[i].Weight < p[j].Weight)
+				My_Swap(p[i], p[j]);
+}
+
+void ShowArr(PeopleInformation* p, int len) {
+	Shapka();
+	for (int i = 0; i < len; i++)
+		ShowPeople(p[i]);
+}
+
+void ShowSmall() {
+	PeopleInformation p[15], peo, pmin[15], pmax[15];
+	double max, min;
+	int len = 0, a = 0, b = 0;
+	fstream file("PeopleInformation.dat", ios::in | ios::binary);
+
+	if (!file.is_open()) {
+		cout << "‘айл не в≥дкрито." << endl;
+		exit(1);
+	}
+
+	while (file.read((char*)&peo, sizeof(peo)))
+		p[len++] = peo;
+
+	file.close();
+
+	min = My_Min(p, len);
+	max = My_Max(p, len);
+
+	for (int i = 0; i < len; i++) {
+		if (p[i].ClothesNumber == min)
+			pmin[a++] = p[i];
+		else if (p[i].ShoesNumber == max)
+			pmax[b++] = p[i];
+	}
+
+	My_Sort_Min(pmin, a);
+	My_Sort_Max(pmax, b);
+
+	cout << "Ћюди з найменшим розм≥ром од€гу та найменшим ростом:" << endl; ShowArr(pmin, a);
+	cout << "Ћюди з найб≥льшим розм≥ром ноги та вагою:" << endl; ShowArr(pmax, b);
+
+}
