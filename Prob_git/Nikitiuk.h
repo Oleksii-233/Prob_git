@@ -3,9 +3,6 @@
 #ifndef Nikitiuk
 #define Nikitiuk
 
-#include <iostream>
-#include <iomanip>
-#include <fstream>
 #include "Dar`ev.h"
 #include "Protocol.h"
 
@@ -38,7 +35,7 @@ void addtofile(){
 		f2.write((char*)&inf, sizeof inf);
 
 	int num;
-	cout << "К-ть, яку хочете дописати: "; cin >> num; cin.get();
+	cout << "К-ть, яку хочете дописати: "; TrueNum(num); cin.get();
 	cout << "Введите дані:\n";
 	for (int i = 0; i <= num - 1; i++)
 	{
@@ -55,7 +52,6 @@ void addtofile(){
 	rename("PeopleInformation1.dat", "PeopleInformation.dat");
 
 }
-
 
 void My_Swap(PeopleInformation& p0, PeopleInformation& p1) {
 	PeopleInformation t;
@@ -100,6 +96,11 @@ void My_Sort() {
 		}
 	} // Сортування за ім'ям
 
+	p_Inic();
+	p_Add("Сортування вмісту файлу.");
+	for (int i = 0; i < len; i++) 
+		p_Add(p[i]);
+	p_Close();
 
 	fstream fbuf("bufer.dat", ios::out | ios::binary);
 	if (!fbuf.is_open()) {
@@ -113,7 +114,6 @@ void My_Sort() {
 	rename("bufer.dat", name);
 
 }
-#endif
 
 double My_Min(PeopleInformation* p, int len) {
 	if (len == 0)
@@ -156,7 +156,7 @@ void My_Sort_Max(PeopleInformation* p, int len) {
 
 void ShowArr(PeopleInformation* p, int len) {
 	Shapka();
-	for (int i = 0; i < len; i++)
+	for (int i = 0; i < len; i++) 
 		ShowPeople(p[i]);
 }
 
@@ -192,4 +192,13 @@ void ShowSmall() {
 	cout << "Люди з найменшим розміром одягу та найменшим ростом:" << endl; ShowArr(pmin, a);
 	cout << "Люди з найбільшим розміром ноги та вагою:" << endl; ShowArr(pmax, b);
 
+	p_Inic();
+	p_Add("Люди із найменшим розмірок одягу і ростом.");
+	p_Add_Arr(pmin, a);
+	p_Add("Люди із найбільшим прзміром взуття та ваги.");
+	p_Add_Arr(pmax, b);
+	p_Close();
+
 }
+
+#endif

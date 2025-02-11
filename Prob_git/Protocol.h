@@ -26,6 +26,7 @@ void p_Add(char* text);
 void p_Add(PeopleInformation p);
 void p_Inic();
 void p_Close();
+void p_Add_Arr(PeopleInformation* p, int l);
 
 void p_Inic() {
 	protocol.open("protocol.dat", ios::out | ios::binary | ios::app);
@@ -43,10 +44,12 @@ void IsOpen(fstream& file) {
 }
 
 void p_Add(const char* text) {
-
 	IsOpen(protocol);
+	
+	char end = '\0';
 
 	protocol.write(text, strlen(text));
+	protocol.write(&end, sizeof(end));
 	protocol.put('\n');
 
 }
@@ -60,6 +63,14 @@ void p_Add(PeopleInformation p) {
 
 }
 
+void p_Add_Arr(PeopleInformation* p, int l) {
+
+	IsOpen(protocol);
+
+	for (int i = 0; i < l; i++)
+		p_Add(*(p + i));
+
+}
 #endif
 
 

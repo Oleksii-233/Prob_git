@@ -19,6 +19,7 @@ void Shapka();
 void ShowPeople(PeopleInformation inf);
 void EnterPeople(PeopleInformation& People);
 void IndenticalHeightAndShoes(fstream& File);
+void TrueNum(int& num);
 
 void Shapka() {
 	cout << setw(3) << "N" << setw(10) << "Прізвище" << setw(10) << "Ім'я" << setw(8) << "Стать" << setw(5) << "Ріст" << setw(5) << "Вага" << setw(7) << "Одяг" << setw(7) << "Взуття" << endl;
@@ -53,11 +54,11 @@ if (!File.is_open()) {
 	p_Inic();
 	p_Add("Файл створено");
 
-	cout << "Введіть кількість людей: "; cin >> NumberPeople;
+	cout << "Введіть кількість людей: "; TrueNum(NumberPeople);
 
 	for (int i = 0; i < NumberPeople; i++) {
 	
-	EnterPeople(People);
+	EnterPeople(People);	
 	p_Add(People);
 	File.write((char*)&People, sizeof People);
 
@@ -123,18 +124,18 @@ void IndenticalHeightAndShoes(fstream& File) {
 	p_Add("Люди однакової ваги та номеру взуття.");
 
 	int k = 0;
-	cout << setw(10) << "Прізвища" << setw(10) << "Вага" << setw(10) << "Номер взуття" << endl;
+	cout << setw(10) << "Прізвища" << setw(10) << "Вага" << setw(20) << "Номер взуття" << endl;
 	for (int i = 0; i < counter - 1; i++) {
 		int ind = 0;
 		for (int j = i + 1; j < counter; j++) {
 			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
 				if (ind == 0) {
 					p_Add(People[i]); p_Add(People[j]);
-					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
-					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
+					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
 				}
 				else {
-					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
 					p_Add(People[j]);
 				}
 				ind++;
@@ -150,4 +151,12 @@ void IndenticalHeightAndShoes(fstream& File) {
 
 	File.close();
 }
+
+void TrueNum(int& num) {
+	do {
+		cin >> num;
+	} while (num <= 0 || num >= 15);
+}
+
 #endif
+
