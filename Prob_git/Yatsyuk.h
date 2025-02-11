@@ -167,7 +167,7 @@ void sortaverage(fstream& file) {
 	
 	if (k == 0) {
 		p_Add("Такі люди відсутні.");
-		cout << "Відсутнію" << endl;
+		cout << "Відсутні." << endl;
 	}
 
 	file.close();
