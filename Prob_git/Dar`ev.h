@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef DARYEV
 #define DARYEV
 
@@ -22,7 +22,7 @@ void IndenticalHeightAndShoes(fstream& File);
 void TrueNum(int& num);
 
 void Shapka() {
-	cout << setw(3) << "N" << setw(10) << "Ïð³çâèùå" << setw(10) << "²ì'ÿ" << setw(8) << "Ñòàòü" << setw(5) << "Ð³ñò" << setw(5) << "Âàãà" << setw(7) << "Îäÿã" << setw(7) << "Âçóòòÿ" << endl;
+	cout << setw(3) << "N" << setw(10) << "ÐŸÑ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ" << setw(10) << "Ð†Ð¼'Ñ" << setw(8) << "Ð¡Ñ‚Ð°Ñ‚ÑŒ" << setw(5) << "Ð Ñ–ÑÑ‚" << setw(5) << "Ð’Ð°Ð³Ð°" << setw(7) << "ÐžÐ´ÑÐ³" << setw(7) << "Ð’Ð·ÑƒÑ‚Ñ‚Ñ" << endl;
 }
 
 void ShowPeople(PeopleInformation inf) {
@@ -30,37 +30,37 @@ void ShowPeople(PeopleInformation inf) {
 }
 
 void EnterPeople(PeopleInformation& People) {
-	cout << "Ââåä³òü íîìåð ëþäèíè: "; cin >> People.Number; cin.ignore();
-	cout << "Ââåä³òü ³ì'ÿ ëþäèíè: "; cin.getline(People.Name, 50);
-	cout << "Ââåä³òü ïð³çâèùå ëþäèíè: "; cin.getline(People.Surname, 50);
-	cout << "Ââåä³òü ñòàòü ëþäèíè: "; cin.getline(People.Sex, 50);
-	cout << "Ââåä³òü çð³ñò ëþäèíè: "; cin >> People.Height;
-	cout << "Ââåä³òü âàãó ëþäèíè: "; cin >> People.Weight;
-	cout << "Ââåä³òü íîìåð îäÿãó ëþäèíè: "; cin >> People.ClothesNumber;
-	cout << "Ââåä³òü íîìåð âçóòòÿ ëþäèíè: "; cin >> People.ShoesNumber;
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Number; cin.ignore();
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ–Ð¼'Ñ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin.getline(People.Name, 50);
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ñ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin.getline(People.Surname, 50);
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑŒ: "; cin.getline(People.Sex, 50);
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ€Ñ–ÑÑ‚ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Height;
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð²Ð°Ð³Ñƒ Ð»ÑŽÐ´Ð¸Ð½Ð¸: "; cin >> People.Weight;
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð¾Ð´ÑÐ³Ñƒ: "; cin >> People.ClothesNumber;
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð¾Ð¼ÐµÑ€ Ð²Ð·ÑƒÑ‚Ñ‚Ñ: "; cin >> People.ShoesNumber;
 }
 
 void WriteInFile(fstream& File) {
 	PeopleInformation People;
-	int NumberPeople=0;
-	
-	File.open("PeopleInformation.dat", ios::out| ios::binary);
+	int NumberPeople = 0;
 
-if (!File.is_open()) {
-		cout << "Ôàéë íå ñòâîðåíî!" << endl;
+	File.open("PeopleInformation.dat", ios::out | ios::binary);
+
+	if (!File.is_open()) {
+		cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¾!" << endl;
 		exit(1);
-}
+	}
 
 	p_Inic();
-	p_Add("Ôàéë ñòâîðåíî");
+	p_Add("Ã”Ã Ã©Ã« Ã±Ã²Ã¢Ã®Ã°Ã¥Ã­Ã®");
 
-	cout << "Ââåä³òü ê³ëüê³ñòü ëþäåé: "; TrueNum(NumberPeople);
+	cout << "Ã‚Ã¢Ã¥Ã¤Â³Ã²Ã¼ ÃªÂ³Ã«Ã¼ÃªÂ³Ã±Ã²Ã¼ Ã«Ã¾Ã¤Ã¥Ã©: "; TrueNum(NumberPeople);
 
 	for (int i = 0; i < NumberPeople; i++) {
-	
-	EnterPeople(People);	
-	p_Add(People);
-	File.write((char*)&People, sizeof People);
+
+		EnterPeople(People);
+		p_Add(People);
+		File.write((char*)&People, sizeof People);
 
 	}
 
@@ -71,35 +71,28 @@ if (!File.is_open()) {
 void ShowSex(fstream& File) {
 	PeopleInformation People;
 	char SexIndex[15] = "\0";
-	cout << "Ââåä³òü ñòàòü: "; cin.ignore(); cin.get(SexIndex, 15);
+	cout << "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÑÑ‚Ð°Ñ‚ÑŒ: "; cin.ignore(); cin.get(SexIndex, 15);
 	int k = 0;
 
 	File.open("PeopleInformation.dat", ios::in | ios::binary);
 
 	if (!File.is_open()) {
-		cout << "Ôàéë íå â³äêðèòî!" << endl;
+		cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¾!" << endl;
 		exit(1);
 	}
 
 	p_Inic();
-	p_Add("Ëþäè çàäàíî¿ ñòàò³.");
+	p_Add("Ã‹Ã¾Ã¤Ã¨ Ã§Ã Ã¤Ã Ã­Ã®Â¿ Ã±Ã²Ã Ã²Â³.");
 
 	Shapka();
 	while (File.read((char*)&People, sizeof People)) {
 
-		if (strcmp(People.Sex,SexIndex) == 0) {
+		if (strcmp(People.Sex, SexIndex) == 0) {
 			p_Add(People);
 			ShowPeople(People);
 			k++;
 		}
 	}
-
-	if (k == 0) {
-		system("cls");
-		cout << "Ëþäåé çàäàíî¿ ñòàò³ íå çíàéäåíî." << endl;
-		p_Add("Ëþäè çàäàíî¿ ñòàò³ â³äñóòí³.");
-	}
-
 	File.close();
 	p_Close();
 }
@@ -111,7 +104,7 @@ void IndenticalHeightAndShoes(fstream& File) {
 	File.open("PeopleInformation.dat", ios::in | ios::binary);
 
 	if (!File.is_open()) {
-		cout << "Íå âäàëîñü â³äêðèòè ôàéë." << endl;
+		cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¾." << endl;
 		exit(1);
 	}
 
@@ -119,35 +112,45 @@ void IndenticalHeightAndShoes(fstream& File) {
 
 	while (File.read((char*)&p, sizeof p))
 		People[counter++] = p;
-	
 
-	p_Add("Ëþäè îäíàêîâî¿ âàãè òà íîìåðó âçóòòÿ.");
+
+	p_Add("Ã‹Ã¾Ã¤Ã¨ Ã®Ã¤Ã­Ã ÃªÃ®Ã¢Ã®Â¿ Ã¢Ã Ã£Ã¨ Ã²Ã  Ã­Ã®Ã¬Ã¥Ã°Ã³ Ã¢Ã§Ã³Ã²Ã²Ã¿.");
 
 	int k = 0;
-	cout << setw(10) << "Ïð³çâèùà" << setw(10) << "Âàãà" << setw(20) << "Íîìåð âçóòòÿ" << endl;
+	cout << setw(10) << "ÐŸÑ€Ñ–Ð·Ð²Ð¸Ñ‰Ðµ" << setw(10) << "Ð’Ð°Ð³Ð°" << setw(20) << "Ð’Ð·ÑƒÑ‚Ñ‚Ñ" << endl;
 	for (int i = 0; i < counter - 1; i++) {
-		int ind = 0;
+
 		for (int j = i + 1; j < counter; j++) {
-			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
-				if (ind == 0) {
-					p_Add(People[i]); p_Add(People[j]);
+			if (People[i].Weight < People[j].Weight) {
+				swap(People[i], People[j]);
+			}
+			k++;
+		}
+	}
+	if (k == 0) {
+		cout << "Ð¢Ð°ÐºÑ– Ð»ÑŽÐ´Ð¸ Ð²Ñ–Ð´ÑÑƒÑ‚Ð½Ñ–." << endl;
+		p_Add("Ã‹Ã¾Ã¤Ã¨ Ã§ Ã®Ã¤Ã­Ã ÃªÃ®Ã¢Ã¨Ã¬ Ã­Ã®Ã¬Ã¥Ã°Ã®Ã¬ Ã¢Ã Ã£Ã¨ Ã²Ã  Ã¢Ã§Ã³Ã²Ã²Ã¿ Ã¢Â³Ã¤Ã±Ã²Ã³Ã­Â³.");
+	}
+	int index = 0;
+	for (int i = 0; i < counter - 1; i++) {
+
+		for (int j = i + 1; j < counter; j++) {
+			if (People[i].ShoesNumber == People[j].ShoesNumber) {
+
+				if (index == 0) {
 					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
 					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
+					index = 1;
 				}
-				else {
-					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
-					p_Add(People[j]);
-				}
-				ind++;
-				k++;
+				else 	cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
+
+			}
+			else {
+				i = j;
 			}
 		}
 	}
 
-	if (k == 0) {
-		cout << "Â³äñóòí³." << endl;
-		p_Add("Ëþäè ç îäíàêîâèì íîìåðîì âàãè òà âçóòòÿ â³äñòóí³.");
-	}
 
 	File.close();
 }
