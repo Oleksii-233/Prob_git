@@ -39,12 +39,31 @@ void EnterPeople(PeopleInformation& People) {
 	cout << "Введіть номер одягу: "; cin >> People.ClothesNumber;
 	cout << "Введіть номер взуття: "; cin >> People.ShoesNumber;
 }
+void EnterPeopleInFile(PeopleInformation& People, fstream& File) {
+	File << People.Number << endl;
+
+	cin.ignore(); 
+
+	cin.getline(People.Name, 50);
+	File << People.Name << endl;
+
+	cin.getline(People.Surname, 50);
+	File << People.Surname << endl;
+
+	cin.getline(People.Sex, 10);
+	File << People.Sex << endl;
+
+	File << People.Height << endl;
+	File << People.Weight << endl;
+	File << People.ClothesNumber << endl;
+	File << People.ShoesNumber << endl;
+}
 
 void WriteInFile(fstream& File) {
 	PeopleInformation People;
 	int NumberPeople = 0;
 
-	File.open("PeopleInformation.dat", ios::out | ios::binary);
+	File.open("PeopleInformation.txt", ios::out | ios::binary);
 
 	if (!File.is_open()) {
 		cout << "Файл не відкрито!" << endl;
@@ -60,8 +79,7 @@ void WriteInFile(fstream& File) {
 
 		EnterPeople(People);
 		p_Add(People);
-		File.write((char*)&People, sizeof People);
-
+		EnterPeopleInFile(People, File);
 	}
 
 	File.close();
@@ -131,26 +149,23 @@ void IndenticalHeightAndShoes(fstream& File) {
 		cout << "Такі люди відсутні." << endl;
 		p_Add("Ëþäè ç îäíàêîâèì íîìåðîì âàãè òà âçóòòÿ â³äñòóí³.");
 	}
-	int index = 0;
+	bool found = false;
 	for (int i = 0; i < counter - 1; i++) {
-
+		bool groupPrinted = false;
 		for (int j = i + 1; j < counter; j++) {
 			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
-
-				if (index == 0) {
-					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
-					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
-					index = 1;
+				if (!groupPrinted) {
+					cout << setw(15) << People[i].Surname << setw(10) << People[i].Weight << setw(10) << People[i].ShoesNumber << endl;
+					groupPrinted = true;
 				}
-				else 	cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
-
+				cout << setw(15) << People[j].Surname << setw(10) << People[j].Weight << setw(10) << People[j].ShoesNumber << endl;
+				found = true;
 			}
-			else {
-				i = j;
-
-			}
-			index = 0;
 		}
+	}
+
+	if (!found) {
+		cout << "Такі люди відсутні." << endl;
 	}
 
 
