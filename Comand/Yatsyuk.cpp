@@ -124,25 +124,7 @@ void sortaverage(fstream& file) {
 	cout << "Люди з ростом +-10% від середнього росту: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
-		if (inf.Height <avhe * 1.1 && inf.Height>avhe * 0.9) {
-			p_Add(inf);
-			ShowPeople(inf);
-			k++;
-		}
-
-	if (k == 0) {
-		p_Add("Такі люди відсутні.");
-		cout << "Відсутні." << endl;
-	}
-	file.clear();
-	file.seekg(0);
-
-	k = 0;
-	p_Add("Люди в межах середньої ваги.");
-	cout << "Люди з вагою +-5% від середньої ваги: \n";
-	Shapka();
-	while (file.read((char*)&inf, sizeof inf))
-		if (inf.Weight<avwe * 1.05 && inf.Weight>avwe * 0.95) {
+		if (inf.Height < avhe * 1.1 && inf.Height>avhe * 0.9 && inf.Weight < avwe * 1.05 && inf.Weight > avwe * 0.95) {
 			p_Add(inf);
 			ShowPeople(inf);
 			k++;
