@@ -127,7 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dar`ev.cpp" />
+    <ClCompile Include="Nicitiuk.cpp" />
     <ClCompile Include="Prob_git.cpp" />
+    <ClCompile Include="Protocol.cpp" />
+    <ClCompile Include="Yatsiyk.cpp" />
+    <ClCompile Include="Yatsyuk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dar`ev.h" />
