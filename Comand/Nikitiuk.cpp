@@ -1,5 +1,7 @@
 #include "Nikitiuk.h"
 
+#include <iostream>
+
 void addtofile() {
 
 	PeopleInformation inf;
@@ -13,6 +15,7 @@ void addtofile() {
 
 	p_Inic();
 	p_Add("Додавання до файлу.");
+	p_Add();
 
 	while (f1.read((char*)&inf, sizeof inf))
 		f2.write((char*)&inf, sizeof inf);
@@ -81,6 +84,7 @@ void My_Sort() {
 
 	p_Inic();
 	p_Add("Сортування вмісту файлу.");
+	p_Add();
 	for (int i = 0; i < len; i++)
 		p_Add(p[i]);
 	p_Close();
@@ -123,6 +127,27 @@ double My_Max(PeopleInformation* p, int len) {
 	return max;
 }
 
+double Min_Height(PeopleInformation* p, int len) {
+	if (len == 0)
+		exit(1);
+
+	double min = p[0].Height;
+	for (int i = 0; i < len; i++) 
+		if (min > p[i].Height)
+			min = p[i].Height;
+	
+}
+
+double Max_Weight(PeopleInformation* p, int len) {
+	if (len == 0)
+		exit(1);
+
+	double max = p[0].Height;
+	for (int i = 0; i < len; i++)
+		if (max < p[i].Height)
+			max = p[i].Height;
+}
+
 void ShowArr(PeopleInformation* p, int len) {
 	Shapka();
 	for (int i = 0; i < len; i++)
@@ -130,7 +155,7 @@ void ShowArr(PeopleInformation* p, int len) {
 }
 
 void ShowSmall() {
-	PeopleInformation p[15], peo, pmin[15], pmax[15];
+	PeopleInformation p[15], peo, pmin[15], pmax[15], p0[15], p1[15];
 	double max, min;
 	int len = 0, a = 0, b = 0;
 	fstream file("PeopleInformation.dat", ios::in | ios::binary);
@@ -155,15 +180,31 @@ void ShowSmall() {
 			pmax[b++] = p[i];
 	}
 
-
-	cout << "Люди з найменшим розміром одягу та найменшим ростом:" << endl; ShowArr(pmin, a);
-	cout << "Люди з найбільшим розміром ноги та вагою:" << endl; ShowArr(pmax, b);
-
+	min = Min_Height(pmin, a);
+	max = Max_Weight(pmax, b);
+	
 	p_Inic();
-	p_Add("Люди із найменшим розмірок одягу і ростом.");
-	p_Add_Arr(pmin, a);
-	p_Add("Люди із найбільшим прзміром взуття та ваги.");
-	p_Add_Arr(pmax, b);
+
+	p_Add("Найменший розмір одягу та ріст");
+	cout << "Люди з найменшим розміром одягу та найменшим ростом:" << endl;
+	Shapka();
+	p_Add();
+	for (int i = 0; i < a; i++) 
+		if (pmin[i].Height == min) {
+			ShowPeople(pmin[i]);
+			p_Add(pmin[i]);
+		}
+	
+	p_Add("Найменша розмір ноги та вага");
+	cout << "Люди з найбільшим розміром ноги та вагою:" << endl; 
+	Shapka();
+	p_Add();
+	for (int i = 0; i < b; i++)
+		if (pmax[i].Height == max) {
+			ShowPeople(pmax[i]);
+			p_Add(pmax[i]);
+		}
+
 	p_Close();
 
 }

@@ -16,6 +16,7 @@ void readfromfile(fstream& file) {
 	p_Add("Читання всього файлу на екран.");
 
 	Shapka();
+	p_Add();
 	while (file.read((char*)&inf, sizeof(inf))) {
 		p_Add(inf);
 		ShowPeople(inf);
@@ -42,15 +43,22 @@ void sortbysize(fstream& file) {
 	while (file.read((char*)&inf, sizeof(inf)))
 	{
 		if (inf.ClothesNumber > 46 && inf.ShoesNumber < 41) {
-			p_Add(inf);
 			cout << inf.Number << "\t" << inf.Surname << endl;
 			k++;
 		}
 	}
 
+
 	if (k == 0) {
 		cout << "Відсутні..." << endl;
 		p_Add("Такі люди відсутні.");
+	}
+	else {
+		file.clear(); file.seekg(0);
+		p_Add();
+		while (file.read((char*)&inf, sizeof(inf)))
+			if (inf.ClothesNumber > 46 && inf.ShoesNumber < 41) 
+				p_Add(inf);
 	}
 
 	file.close();
@@ -120,12 +128,11 @@ void sortaverage(fstream& file) {
 	file.seekg(0);
 
 	int k = 0;
-	p_Add("Люди в межах середнього росту.");
-	cout << "Люди з ростом +-10% від середнього росту: \n";
+	p_Add("Люди в межах середнього росту та ваги.");
+	cout << "Люди з ростом +-10% від середнього росту та вагою +-5%: \n";
 	Shapka();
 	while (file.read((char*)&inf, sizeof inf))
 		if (inf.Height < avhe * 1.1 && inf.Height>avhe * 0.9 && inf.Weight < avwe * 1.05 && inf.Weight > avwe * 0.95) {
-			p_Add(inf);
 			ShowPeople(inf);
 			k++;
 		}
@@ -133,6 +140,13 @@ void sortaverage(fstream& file) {
 	if (k == 0) {
 		p_Add("Такі люди відсутні.");
 		cout << "Відсутні." << endl;
+	}
+	else {
+		file.clear(); file.seekg(0);
+		p_Add();
+		while (file.read((char*)&inf, sizeof inf))
+			if (inf.Height < avhe * 1.1 && inf.Height>avhe * 0.9 && inf.Weight < avwe * 1.05 && inf.Weight > avwe * 0.95)
+				p_Add(inf);
 	}
 
 	file.close();

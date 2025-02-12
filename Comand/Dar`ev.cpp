@@ -32,11 +32,11 @@ void WriteInFile(fstream& File) {
 
 	p_Inic();
 	p_Add("Файл створено");
+	p_Add();
 
 	cout << "Введіть кількість людей: "; TrueNum(NumberPeople);
 
 	for (int i = 0; i < NumberPeople; i++) {
-
 		EnterPeople(People);
 		p_Add(People);
 		File.write((char*)&People, sizeof People);
@@ -78,6 +78,13 @@ void ShowSex(fstream& File) {
 		cout << "Людей заданої статі не знайдено." << endl;
 		p_Add("Люди заданої статі відсутні.");
 	}
+	else {
+		File.clear(); File.seekg(0);
+		p_Add();
+		while (File.read((char*)&People, sizeof People)) 
+			if (strcmp(People.Sex, SexIndex) == 0) 
+				p_Add(People);	
+	}
 
 	File.close();
 	p_Close();
@@ -101,46 +108,51 @@ void IndenticalHeightAndShoes(fstream& File) {
 
 
 	p_Add("Люди з однаковою вагою і номером взуття");
-
 	int k = 0;
-	cout << setw(10) << "Прізвище" << setw(10) << "Вага" << setw(20) << "Взуття" << endl;
 	for (int i = 0; i < counter - 1; i++) {
-
 		for (int j = i + 1; j < counter; j++) {
 			if (People[i].Weight < People[j].Weight) {
 				swap(People[i], People[j]);
 			}
-			k++;
+			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber)
+				k++;
 		}
 	}
+
 	if (k == 0) {
 		cout << "Такі люди відсутні" << endl;
 		p_Add("Такі люди відсутні");
 	}
-	int index = 0;
-	for (int i = 0; i < counter - 1; i++) {
+	else {
+		p_Add();
+		cout << setw(10) << "Прізвище" << setw(10) << "Вага" << setw(20) << "Взуття" << endl;
+		int index = 0;
+		for (int i = 0; i < counter - 1; i++) {
 
-		for (int j = i + 1; j < counter; j++) {
-			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
+			for (int j = i + 1; j < counter; j++) {
+				if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
 
-				if (index == 0) {
-					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
-					cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
-					index = 1;
+					if (index == 0) {
+						p_Add(People[i]), p_Add(People[j]);
+						cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
+						cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
+						index = 1;
+					}
+					else {
+						p_Add(People[j]);
+						cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
+					}
 				}
-				else 	cout << setw(10) << People[j].Surname << setw(10) << People[j].Weight << setw(20) << People[j].ShoesNumber << endl;
-
+				else {
+					i = j;
+				}
+				index = 0;
 			}
-			else {
-				i = j;
-
-			}
-			index = 0;
 		}
 	}
 
-
 	File.close();
+	p_Close();
 }
 
 void TrueNum(int& num) {
