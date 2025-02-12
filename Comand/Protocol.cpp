@@ -2,8 +2,9 @@
 
 #include <iomanip>
 
-char name[] = "protocol.txt";
+char name[] = "Test2.txt";
 fstream protocol;
+
 void p_Inic() {
 	protocol.open(name, ios::out | ios::app);
 }

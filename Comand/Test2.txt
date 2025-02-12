@@ -1,0 +1,79 @@
+Читання всього файлу на екран.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  2              Normal                 Man    Male  190   80     48      45
+  3              Banana             Monkey2  Female  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+  5               Woter               Botle  Female  200  100     50      45
+Найменший розмір одягу та ріст
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  3              Banana             Monkey2  Female  120   30     30      36
+Найменша розмір ноги та вага
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  5               Woter               Botle  Female  200  100     50      45
+Сортування вмісту файлу.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  3              Banana             Monkey2  Female  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+  1              Monkey              Banana    Male  120   30     30      36
+  2              Normal                 Man    Male  190   80     48      45
+  5               Woter               Botle  Female  200  100     50      45
+Сортування вмісту файлу.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  5               Woter               Botle  Female  200  100     50      45
+  2              Normal                 Man    Male  190   80     48      45
+  3              Banana             Monkey2  Female  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+
+Читання всього файлу на екран.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  5               Woter               Botle  Female  200  100     50      45
+  2              Normal                 Man    Male  190   80     48      45
+  3              Banana             Monkey2  Female  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+  7                Game              Master  Female  170   70     45      44
+  8              Banana             Monkey3    Male  120   30     30      36
+  9                Wild                West  Female  180   80     51      43
+ 10               Small               Knife    Male  200  100     50      39
+ 11            Mountine                Meet  Female  199   99     48      48
+ 12                 Men                Mega    Male  210  100     56      45
+Люди в межах середнього росту та ваги.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  7                Game              Master  Female  170   70     45      44
+Найменший розмір одягу та ріст
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  3              Banana             Monkey2  Female  120   30     30      36
+  8              Banana             Monkey3    Male  120   30     30      36
+Найменша розмір ноги та вага
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+ 11            Mountine                Meet  Female  199   99     48      48
+Сортування вмісту файлу.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  3              Banana             Monkey2  Female  120   30     30      36
+  8              Banana             Monkey3    Male  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+  7                Game              Master  Female  170   70     45      44
+ 12                 Men                Mega    Male  210  100     56      45
+  1              Monkey              Banana    Male  120   30     30      36
+ 11            Mountine                Meet  Female  199   99     48      48
+  2              Normal                 Man    Male  190   80     48      45
+ 10               Small               Knife    Male  200  100     50      39
+  9                Wild                West  Female  180   80     51      43
+  5               Woter               Botle  Female  200  100     50      45
+Сортування вмісту файлу.
+  N            Прізвище                Ім'я   Стать Ріст Вага   Одяг Взуття
+  1              Monkey              Banana    Male  120   30     30      36
+  5               Woter               Botle  Female  200  100     50      45
+ 10               Small               Knife    Male  200  100     50      39
+  2              Normal                 Man    Male  190   80     48      45
+  7                Game              Master  Female  170   70     45      44
+ 11            Mountine                Meet  Female  199   99     48      48
+ 12                 Men                Mega    Male  210  100     56      45
+  3              Banana             Monkey2  Female  120   30     30      36
+  8              Banana             Monkey3    Male  120   30     30      36
+  4            For Test             Normal)    Male  190   80     48      45
+  9                Wild                West  Female  180   80     51      43

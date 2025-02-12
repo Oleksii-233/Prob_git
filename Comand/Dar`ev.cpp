@@ -67,7 +67,6 @@ void ShowSex(fstream& File) {
 	while (File.read((char*)&People, sizeof People)) {
 
 		if (strcmp(People.Sex, SexIndex) == 0) {
-			p_Add(People);
 			ShowPeople(People);
 			k++;
 		}
