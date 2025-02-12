@@ -135,7 +135,7 @@ void IndenticalHeightAndShoes(fstream& File) {
 	for (int i = 0; i < counter - 1; i++) {
 
 		for (int j = i + 1; j < counter; j++) {
-			if (People[i].ShoesNumber == People[j].ShoesNumber) {
+			if (People[i].Weight == People[j].Weight && People[i].ShoesNumber == People[j].ShoesNumber) {
 
 				if (index == 0) {
 					cout << setw(10) << People[i].Surname << setw(10) << People[i].Weight << setw(20) << People[i].ShoesNumber << endl;
@@ -147,7 +147,9 @@ void IndenticalHeightAndShoes(fstream& File) {
 			}
 			else {
 				i = j;
+
 			}
+			index = 0;
 		}
 	}
 
