@@ -14,8 +14,6 @@ void My_Sort();
 void ShowSmall();
 double My_Min(PeopleInformation* p, int len);
 double My_Max(PeopleInformation* p, int len);
-void My_Sort_Min(PeopleInformation* p, int len);
-void My_Sort_Max(PeopleInformation* p, int len);
 void ShowArr(PeopleInformation* p, int len);
 
 #endif

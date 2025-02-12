@@ -123,20 +123,6 @@ double My_Max(PeopleInformation* p, int len) {
 	return max;
 }
 
-void My_Sort_Min(PeopleInformation* p, int len) {
-	for (int i = 0; i < len - 1; i++)
-		for (int j = i + 1; j < len; j++)
-			if (p[i].Height > p[j].Height)
-				My_Swap(p[i], p[j]);
-}
-
-void My_Sort_Max(PeopleInformation* p, int len) {
-	for (int i = 0; i < len - 1; i++)
-		for (int j = i + 1; j < len; j++)
-			if (p[i].Weight < p[j].Weight)
-				My_Swap(p[i], p[j]);
-}
-
 void ShowArr(PeopleInformation* p, int len) {
 	Shapka();
 	for (int i = 0; i < len; i++)
@@ -169,8 +155,6 @@ void ShowSmall() {
 			pmax[b++] = p[i];
 	}
 
-	My_Sort_Min(pmin, a);
-	My_Sort_Max(pmax, b);
 
 	cout << "Ћюди з найменшим розм≥ром од€гу та найменшим ростом:" << endl; ShowArr(pmin, a);
 	cout << "Ћюди з найб≥льшим розм≥ром ноги та вагою:" << endl; ShowArr(pmax, b);
